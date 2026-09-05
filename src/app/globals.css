@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Chata Seninka — design tokens
+
+   The system is borrowed from the object every Czech hiker already knows how
+   to read: the KČT hiking map and the signposts that go with it.
+
+   A map is mostly muted — printed stone and forest — and saturates exactly one
+   colour, the trail. So the page ground is warm stone, structure is spruce
+   green, and the marker red appears only where the visitor is meant to go
+   next. Nothing else is allowed to be that loud.
+
+   Distances, elevations and prices are set in mono, the way a map sets its
+   own data. That mono layer is what keeps the page from reading as a generic
+   warm-cream hospitality template.
+--------------------------------------------------------------------------- */
+
+@theme {
+  /* ground — warm stone, the paper a hiking map is printed on */
+  --color-kamen: #e4e0d5;
+  --color-kamen-tmavy: #d3cec0;
+  --color-papir: #f2efe7;
+
+  /* structure — Jeseníky spruce */
+  --color-smrk: #1c2a21;
+  --color-smrk-2: #26362b;
+  --color-mech: #6b7f63;
+  --color-mech-svetly: #96ac8c;
+
+  /* text — bark */
+  --color-kura: #4b4338;
+  --color-kura-svetly: #655c4d;
+
+  /* the trail marker. Wayfinding only — never decoration. */
+  --color-znacka: #a8341d;
+
+  --font-display: var(--font-zilla-slab), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-familjen), system-ui, sans-serif;
+  --font-data: var(--font-plex-mono), ui-monospace, "SFMono-Regular", monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* clear the fixed header when jumping to an anchor */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--color-kamen);
+    color: var(--color-kura);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Czech stacks a lot of accents; keep them off the line above. */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    line-height: 1.04;
+    /* a slab serif's own serifs already do the tightening a transitional
+       serif would need negative tracking for — leave it near zero */
+    letter-spacing: -0.006em;
+    text-wrap: balance;
+    color: var(--color-smrk);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--color-znacka);
+    color: var(--color-papir);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-znacka);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Dark sections invert the focus ring so it stays visible on spruce. */
+  .na-tmavem :focus-visible {
+    outline-color: var(--color-mech-svetly);
+  }
+}
+
+/* --------------------------------------------------------------- utilities */
+
+/** Section label. Mono, because on a map the labels are mono too. */
+@utility eyebrow {
+  font-family: var(--font-data);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-kura-svetly);
+}
+
+/** Numbers, distances, prices — the map's data layer. */
+@utility udaj {
+  font-family: var(--font-data);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/**
+ * The signpost plate. Czech trail signs are arrow-shaped: a rectangle with a
+ * notch cut into the pointing end. Reproduced with clip-path so it stays crisp
+ * at any size, and dropped on narrow screens where the notch would eat text.
+ */
+@utility deska {
+  clip-path: polygon(0 0, calc(100% - 1.25rem) 0, 100% 50%, calc(100% - 1.25rem) 100%, 0 100%);
+}
+
+@media (max-width: 48rem) {
+  .deska {
+    clip-path: none;
+  }
+}
+
+/**
+ * Contour lines, used once — behind the surroundings section, where the page
+ * is actually talking about terrain. Anywhere else it would just be texture.
+ */
+@utility vrstevnice {
+  background-image: repeating-radial-gradient(
+    ellipse 62rem 30rem at 22% 118%,
+    transparent 0,
+    transparent 3.6rem,
+    color-mix(in srgb, var(--color-mech) 100%, transparent) 3.6rem,
+    color-mix(in srgb, var(--color-mech) 100%, transparent) calc(3.6rem + 1px),
+    transparent calc(3.6rem + 1px),
+    transparent 7.2rem
+  );
+}
+
+/* Hairline rule that fades out, so section edges never look like table borders. */
+@utility linka {
+  height: 1px;
+  background-image: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-kura) 30%, transparent) 0%,
+    color-mix(in srgb, var(--color-kura) 14%, transparent) 55%,
+    transparent 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

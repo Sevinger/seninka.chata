@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- The KČT trail mark: a red band between two pale ones, on spruce. -->
+  <rect width="32" height="32" fill="#1c2a21" />
+  <rect x="6" y="7" width="20" height="6" fill="#e4e0d5" />
+  <rect x="6" y="13" width="20" height="6" fill="#a8341d" />
+  <rect x="6" y="19" width="20" height="6" fill="#e4e0d5" />
+</svg>
