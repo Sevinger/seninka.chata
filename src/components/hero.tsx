@@ -6,7 +6,6 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 
 import { Fotka } from "@/components/fotka";
 import { Tlacitko } from "@/components/tlacitko";
-import { Znacka } from "@/components/znacka";
 import { bookingUrl, fotkaHero, parametry, texty } from "@/lib/content";
 
 /**
@@ -53,10 +52,7 @@ export function Hero() {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-3xl pb-14"
         >
-          <div className="flex items-center gap-2.5">
-            <Znacka tmave />
-            <span className="eyebrow text-mech-svetly">{texty.hero.stitek}</span>
-          </div>
+          <span className="eyebrow text-mech-svetly">{texty.hero.stitek}</span>
 
           <h1 className="mt-6 text-[clamp(2.4rem,6.2vw,4.6rem)] font-normal text-papir">
             {texty.hero.nadpis}

@@ -2,7 +2,6 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 
 import { Reveal } from "@/components/reveal";
 import { Tlacitko } from "@/components/tlacitko";
-import { Znacka } from "@/components/znacka";
 import { bookingUrl, cenaText, cena } from "@/lib/content";
 
 /**
@@ -23,10 +22,7 @@ export function PruhPoptavka({
         <Reveal>
           <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-xl">
-              <div className="flex items-center gap-2.5">
-                <Znacka />
-                <span className="eyebrow">Rezervace</span>
-              </div>
+              <span className="eyebrow">Rezervace</span>
               <h2 className="mt-5 text-[clamp(1.85rem,4vw,2.75rem)] font-normal">
                 {nadpis}
               </h2>

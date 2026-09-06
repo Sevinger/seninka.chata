@@ -18,22 +18,22 @@
 
 @theme {
   /* ground — warm stone, the paper a hiking map is printed on */
-  --color-kamen: #e4e0d5;
-  --color-kamen-tmavy: #d3cec0;
-  --color-papir: #f2efe7;
+  --color-kamen: #e7e5df;
+  --color-kamen-tmavy: #d8d6cf;
+  --color-papir: #f7f6f2;
 
   /* structure — Jeseníky spruce */
-  --color-smrk: #1c2a21;
-  --color-smrk-2: #26362b;
-  --color-mech: #6b7f63;
-  --color-mech-svetly: #96ac8c;
+  --color-smrk: #29302d;
+  --color-smrk-2: #3a413d;
+  --color-mech: #727b70;
+  --color-mech-svetly: #aeb6aa;
 
   /* text — bark */
-  --color-kura: #4b4338;
-  --color-kura-svetly: #655c4d;
+  --color-kura: #3f4440;
+  --color-kura-svetly: #69706b;
 
   /* the trail marker. Wayfinding only — never decoration. */
-  --color-znacka: #a8341d;
+  --color-znacka: #59645c;
 
   --font-display: var(--font-zilla-slab), Georgia, "Times New Roman", serif;
   --font-body: var(--font-familjen), system-ui, sans-serif;
@@ -91,28 +91,24 @@
 
 /* --------------------------------------------------------------- utilities */
 
-/** Section label. Mono, because on a map the labels are mono too. */
+/** Small labels stay quiet and functional, without decorative markers. */
 @utility eyebrow {
   font-family: var(--font-data);
   font-size: 0.6875rem;
   font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-kura-svetly);
 }
 
-/** Numbers, distances, prices — the map's data layer. */
+/** Numbers, distances and prices. */
 @utility udaj {
   font-family: var(--font-data);
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
 }
 
-/**
- * The signpost plate. Czech trail signs are arrow-shaped: a rectangle with a
- * notch cut into the pointing end. Reproduced with clip-path so it stays crisp
- * at any size, and dropped on narrow screens where the notch would eat text.
- */
+/** The signpost plate remains available for the surroundings data section. */
 @utility deska {
   clip-path: polygon(0 0, calc(100% - 1.25rem) 0, 100% 50%, calc(100% - 1.25rem) 100%, 0 100%);
 }

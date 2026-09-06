@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 
-import { Znacka } from "@/components/znacka";
 import { cn } from "@/lib/utils";
 
 /**
@@ -23,10 +22,7 @@ export function NadpisSekce({
 }) {
   return (
     <div className={cn("max-w-2xl", className)}>
-      <div className="flex items-center gap-2.5">
-        <Znacka tmave={tmave} />
-        <span className={cn("eyebrow", tmave && "text-mech-svetly")}>{stitek}</span>
-      </div>
+      <span className={cn("eyebrow", tmave && "text-mech-svetly")}>{stitek}</span>
       <h2
         className={cn(
           "mt-5 text-[clamp(1.85rem,4.2vw,3rem)] font-normal",

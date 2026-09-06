@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
-import { Znacka } from "@/components/znacka";
 import { navigace, site } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
@@ -53,7 +52,6 @@ export function SiteHeader() {
           className="flex items-center gap-2.5"
           aria-label={`${site.name} — úvodní stránka`}
         >
-          <Znacka tmave={pruhledne} />
           <span
             className={cn(
               "udaj text-[0.8125rem] font-medium uppercase tracking-[0.2em] transition-colors",
@@ -129,7 +127,6 @@ export function SiteHeader() {
                       aktivni ? "text-smrk" : "text-kura-svetly"
                     )}
                   >
-                    {aktivni ? <Znacka /> : <span className="w-3.5" aria-hidden />}
                     {polozka.label}
                   </Link>
                 </li>

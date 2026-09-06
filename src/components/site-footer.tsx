@@ -20,8 +20,8 @@ export function SiteFooter() {
               </span>
             </div>
             <p className="mt-5 max-w-sm text-[0.9375rem] leading-relaxed text-kamen/70">
-              Celá chata pro pět lidí v Nové Senince, kousek pod Kralickým
-              Sněžníkem. Pronajímáme napřímo — bez provize.
+              Celá chata pro pět lidí v Nové Senince, v klidném údolí Jeseníků.
+              Pronajímáme ji přímo.
             </p>
           </div>
 

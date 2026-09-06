@@ -42,7 +42,7 @@ export function FormularPoptavky() {
         <p className="mt-4 text-[0.9375rem] leading-relaxed text-kura-svetly">
           {stav.zprava ??
             "Máme ji. Ozveme se vám co nejdřív a termín potvrdíme."}{" "}
-          Termín zatím není rezervovaný — platí až po naší odpovědi.
+          Termín zatím není rezervovaný. Potvrdíme ho až v odpovědi.
         </p>
       </div>
     );
@@ -183,7 +183,7 @@ export function FormularPoptavky() {
             id={`${id}-zprava`}
             jmeno="zprava"
             popisek="Poznámka"
-            napoveda="Nepovinné — kolik jedete dětí, čas příjezdu, cokoli dalšího."
+            napoveda="Nepovinné. Napište například věk dětí nebo plánovaný čas příjezdu."
           >
             <textarea
               id={`${id}-zprava`}

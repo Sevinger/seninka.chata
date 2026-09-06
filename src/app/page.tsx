@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { Galerie } from "@/components/galerie";
+import { Fotka as FotkaSlot } from "@/components/fotka";
 import { Hero } from "@/components/hero";
 import { NadpisSekce } from "@/components/nadpis-sekce";
 import { PruhPoptavka } from "@/components/pruh-poptavka";
@@ -97,18 +98,22 @@ export default function Domu() {
       </section>
 
       {/* ── Okolí — the signpost ─────────────────────────────────────────── */}
-      <section className="na-tmavem relative overflow-hidden bg-smrk py-24 sm:py-32">
-        <div aria-hidden className="vrstevnice absolute inset-0 opacity-[0.28]" />
+      <section className="border-t border-kura/12 bg-kamen-tmavy/35 py-24 sm:py-32">
         <div className={`relative ${obal}`}>
-          <div className="grid gap-14 lg:grid-cols-[1fr_1.25fr] lg:gap-20">
+          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
             <Reveal>
               <NadpisSekce
                 stitek={texty.okoli.stitek}
                 nadpis={texty.okoli.nadpis}
-                tmave
               >
                 <p>{texty.okoli.text}</p>
               </NadpisSekce>
+              <div className="mt-9 overflow-hidden">
+                <FotkaSlot
+                  fotka={galerie.find((fotka) => fotka.id === "okoli") ?? galerie[0]}
+                  sizes="(min-width: 1024px) 36vw, 92vw"
+                />
+              </div>
             </Reveal>
 
             <Rozcestnik cile={rozcestnik} className="lg:pt-3" />

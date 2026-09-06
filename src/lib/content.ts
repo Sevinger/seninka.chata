@@ -58,7 +58,7 @@ export const cena = {
   mena: "Kč",
   jednotka: "za noc",
   /** Cena je stejná celý rok, bez sezónního rozlišení. */
-  poznamka: "Stejná cena po celý rok, za celou chatu — ne za osobu.",
+    poznamka: "Cena platí stejně po celý rok a vztahuje se na celou chatu.",
 } as const;
 
 /* ─────────────────────────────────────────────────────────────── Parametry */
@@ -119,32 +119,32 @@ export const vybaveni: Vybavena[] = [
     ikona: "wifi",
     nazev: "Wi‑Fi přes Starlink",
     popis:
-      "Satelitní připojení, takže internet funguje i tady, kde mobilní signál většinou končí.",
+      "Satelitní připojení, které funguje i v klidném údolí mimo hlavní silnice.",
   },
   {
     ikona: "krb",
     nazev: "Krb",
-    popis: "Hlavní důvod, proč se v zimě z obýváku nikomu nechce ven.",
+    popis: "Příjemné teplo a místo, kde se dá večer v klidu posedět.",
   },
   {
     ikona: "gril",
     nazev: "Gril",
-    popis: "Na zahradě, k dispozici po celý rok.",
+    popis: "Na zahradě je připravený pro letní vaření a posezení.",
   },
   {
     ikona: "zahrada",
     nazev: "Zahrada",
-    popis: "Vlastní pozemek u chaty, kde si děti i pes sousedů hrají bez dozoru.",
+    popis: "Prostor kolem chaty pro odpočinek, hry a letní posezení.",
   },
   {
     ikona: "parkovani",
     nazev: "Parkování u chaty",
-    popis: "Auto zaparkujete přímo na pozemku, nikam se s bagáží nechodí.",
+    popis: "Zaparkujete přímo u chaty, takže zavazadla nemusíte nosit daleko.",
   },
   {
     ikona: "kuchyne",
     nazev: "Plně vybavená kuchyně",
-    popis: "Nádobí, spotřebiče a stůl, u kterého se dá i posedět.",
+    popis: "Základní vybavení pro běžné vaření a společné stolování.",
   },
 ];
 
@@ -387,29 +387,29 @@ export const pravidla: Pravidlo[] = [
 export const texty = {
   hero: {
     stitek: "Nová Seninka / Jeseníky",
-    nadpis: "Celá chata jen pro vás, kousek pod Kralickým Sněžníkem.",
+    nadpis: "Chata pro pět lidí v klidném údolí Jeseníků.",
     podnadpis:
-      "Pět lůžek, krb, zahrada s grilem a les, který začíná hned za plotem.",
+      "Celá chata jen pro vás. Krb, zahrada, les za plotem a cesty do hor hned za dveřmi.",
   },
   uvod: {
     stitek: "O chatě",
-    nadpis: "Údolí, kde silnice končí dřív než les",
+    nadpis: "Místo, kde se dá na chvíli zpomalit",
     text: [
-      "Nová Seninka je pár stavení v údolí nad Starým Městem pod Sněžníkem. Není tu obchod ani hospoda — je tu ticho, potok a hřeben Kralického Sněžníku nad hlavou.",
-      "Chatu si pronajímáte celou. Žádní další hosté, žádná recepce, žádné sdílené chodby. Přijedete, zatopíte v krbu a další čtyři dny je to tu vaše.",
+      "Nová Seninka leží v údolí nad Starým Městem pod Sněžníkem. Kolem jsou louky, lesy a hřeben Kralického Sněžníku; zázemí pro běžný nákup najdete ve Starém Městě.",
+      "Chatu si pronajímáte celou, takže máte klid a vlastní tempo. Ráno můžete vyrazit na výlet, odpoledne zůstat na zahradě a večer se sejít u krbu.",
     ],
     proKoho: [
       {
         nazev: "Pro rodiny",
-        text: "Dvě ložnice, pět lůžek a zahrada, kde jsou děti pořád na dohled.",
+        text: "Dvě ložnice, pět lůžek a dost prostoru uvnitř i venku.",
       },
       {
         nazev: "Pro dvě dvojice",
-        text: "Každý pár má svou ložnici, společný je jen obývák a stůl.",
+        text: "Dvě samostatné ložnice a společný obývák s kuchyní.",
       },
       {
         nazev: "Pro ty, co chtějí klid",
-        text: "Nejbližší ruch je osm kilometrů daleko. Wi‑Fi ale funguje.",
+        text: "Klidné okolí, vlastní zahrada a internet přes Starlink, když ho potřebujete.",
       },
     ],
   },
@@ -419,22 +419,22 @@ export const texty = {
   },
   galerie: {
     stitek: "Fotky",
-    nadpis: "Jak to u nás vypadá",
+    nadpis: "Podívejte se dovnitř i kolem chaty",
   },
   okoli: {
     stitek: "Okolí",
-    nadpis: "Odkud kam je to jak daleko",
-    text: "Chata stojí v Nové Senince, části Starého Města pod Sněžníkem. Odsud je to kousek na hřeben i do civilizace.",
+    nadpis: "Hory začínají za dveřmi",
+    text: "Chata stojí v Nové Senince, části Starého Města pod Sněžníkem. Do lesa je to pár kroků, na hřeben se vyráží po značených trasách a do města sjedete autem.",
   },
   cenik: {
     stitek: "Ceník",
-    nadpis: "Jedna cena, celý rok",
-    text: "Platí se za celou chatu, ne za osobu. Cena se nemění podle sezóny ani podle toho, kolik vás přijede.",
+    nadpis: "Jednoduchý ceník",
+    text: "Cena je za celou chatu a zůstává stejná po celý rok. Přesné podmínky pobytu doplníme, jakmile je potvrdíme.",
   },
   objednavky: {
     stitek: "Poptávka",
-    nadpis: "Napište nám termín, ozveme se",
-    text: "Formulář odešle poptávku přímo majiteli — není to okamžitá rezervace. Ozveme se vám a termín potvrdíme ručně, obvykle do druhého dne.",
+    nadpis: "Napište nám, kdy chcete přijet",
+    text: "Pošlete nám termín a počet hostů. Poptávka není okamžitá rezervace; dostupnost vám potvrdíme osobně.",
   },
 } as const;
 

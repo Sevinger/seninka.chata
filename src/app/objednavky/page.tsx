@@ -10,7 +10,7 @@ import { bookingUrl, cena, cenaText, kontakt, texty } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Poptávka termínu",
   description:
-    "Napište nám termín a my se ozveme. Poptávka jde přímo majiteli chaty, bez provize. Není to okamžitá rezervace — termín potvrzujeme ručně.",
+    "Napište nám termín a počet hostů. Poptávka jde přímo majiteli chaty. Není to okamžitá rezervace; dostupnost potvrdíme v odpovědi.",
   robots: { index: true, follow: true },
 };
 
@@ -22,7 +22,7 @@ const kroky = [
   {
     cislo: "01",
     nadpis: "Napíšete termín",
-    text: "Vyplníte formulář. Nic se tím zatím nerezervuje ani neplatí.",
+    text: "Vyplníte formulář a odešlete nám svou poptávku. Tím se zatím nic nerezervuje ani neplatí.",
   },
   {
     cislo: "02",
