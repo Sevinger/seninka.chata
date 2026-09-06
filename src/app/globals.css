@@ -18,25 +18,25 @@
 
 @theme {
   /* ground — warm stone, the paper a hiking map is printed on */
-  --color-kamen: #e7e5df;
-  --color-kamen-tmavy: #d8d6cf;
-  --color-papir: #f7f6f2;
+  --color-kamen: #f1f0ec;
+  --color-kamen-tmavy: #deded8;
+  --color-papir: #fafaf7;
 
   /* structure — Jeseníky spruce */
-  --color-smrk: #29302d;
-  --color-smrk-2: #3a413d;
-  --color-mech: #727b70;
-  --color-mech-svetly: #aeb6aa;
+  --color-smrk: #202321;
+  --color-smrk-2: #343834;
+  --color-mech: #758078;
+  --color-mech-svetly: #b5bdb5;
 
   /* text — bark */
-  --color-kura: #3f4440;
+  --color-kura: #343834;
   --color-kura-svetly: #69706b;
 
   /* the trail marker. Wayfinding only — never decoration. */
-  --color-znacka: #59645c;
+  --color-znacka: #657169;
 
-  --font-display: var(--font-zilla-slab), Georgia, "Times New Roman", serif;
-  --font-body: var(--font-familjen), system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-dm-sans), system-ui, sans-serif;
   --font-data: var(--font-plex-mono), ui-monospace, "SFMono-Regular", monospace;
 }
 
@@ -60,10 +60,8 @@
   h2,
   h3 {
     font-family: var(--font-display);
-    line-height: 1.04;
-    /* a slab serif's own serifs already do the tightening a transitional
-       serif would need negative tracking for — leave it near zero */
-    letter-spacing: -0.006em;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
     text-wrap: balance;
     color: var(--color-smrk);
   }

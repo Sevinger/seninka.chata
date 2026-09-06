@@ -37,7 +37,7 @@ export function PruhPoptavka({
               </p>
               <div className="mt-5 flex flex-wrap gap-3">
                 <Tlacitko href="/objednavky">
-                  Rezervovat termín
+                  Poptat termín
                   <ArrowRight size={17} aria-hidden />
                 </Tlacitko>
                 {bookingUrl ? (

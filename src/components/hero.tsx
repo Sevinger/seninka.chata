@@ -29,7 +29,7 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="na-tmavem relative flex min-h-[92svh] flex-col justify-end overflow-hidden bg-smrk"
+      className="na-tmavem relative flex min-h-[88svh] flex-col justify-end overflow-hidden bg-smrk"
     >
       <motion.div style={{ y }} className="absolute inset-x-0 -bottom-[8%] top-0">
         <Fotka fotka={fotkaHero} priority vyplnit tmave bezPopisku sizes="100vw" />
@@ -45,26 +45,26 @@ export function Hero() {
         className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-smrk/60 to-transparent"
       />
 
-      <div className="relative mx-auto w-full max-w-[86rem] px-5 pb-0 pt-32 sm:px-8 lg:px-12">
+      <div className="relative mx-auto w-full max-w-[92rem] px-5 pb-10 pt-32 sm:px-8 sm:pb-14 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: reduced ? 0 : 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-3xl pb-14"
         >
-          <span className="eyebrow text-mech-svetly">{texty.hero.stitek}</span>
+          <span className="text-sm font-medium tracking-wide text-kamen/80">{texty.hero.stitek}</span>
 
-          <h1 className="mt-6 text-[clamp(2.4rem,6.2vw,4.6rem)] font-normal text-papir">
+          <h1 className="mt-5 max-w-4xl text-[clamp(3.2rem,8vw,7.8rem)] font-normal leading-[0.9] text-papir">
             {texty.hero.nadpis}
           </h1>
 
-          <p className="mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-kamen/85 sm:text-lg">
+          <p className="mt-7 max-w-lg text-base leading-relaxed text-kamen/85 sm:text-lg">
             {texty.hero.podnadpis}
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <Tlacitko href="/objednavky">
-              Rezervovat termín
+              Poptat termín
               <ArrowRight size={17} aria-hidden />
             </Tlacitko>
             {bookingUrl ? (
@@ -77,12 +77,12 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* The data rail — the map legend for the property. */}
+      {/* A quiet practical line, kept separate from the headline. */}
       <motion.dl
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.35 }}
-        className="relative mx-auto grid w-full max-w-[86rem] grid-cols-2 border-t border-kamen/20 px-5 sm:px-8 md:grid-cols-4 lg:px-12"
+        className="relative mx-auto grid w-full max-w-[92rem] grid-cols-2 border-t border-kamen/25 px-5 sm:px-8 md:grid-cols-4 lg:px-12"
       >
         {parametry.map((polozka, i) => (
           <div

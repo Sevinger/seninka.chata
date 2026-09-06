@@ -22,10 +22,10 @@ export function NadpisSekce({
 }) {
   return (
     <div className={cn("max-w-2xl", className)}>
-      <span className={cn("eyebrow", tmave && "text-mech-svetly")}>{stitek}</span>
+      <span className="sr-only">{stitek}</span>
       <h2
         className={cn(
-          "mt-5 text-[clamp(1.85rem,4.2vw,3rem)] font-normal",
+          "text-[clamp(2.5rem,5.4vw,5.2rem)] font-normal leading-[0.94]",
           tmave && "text-papir"
         )}
       >

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Familjen_Grotesk, IBM_Plex_Mono, Zilla_Slab } from "next/font/google";
+import { DM_Sans, Fraunces, IBM_Plex_Mono } from "next/font/google";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -10,20 +10,20 @@ import "./globals.css";
  * latin-ext carries ě š č ř ž ý á í é ů ú ň ť ď. Without it Czech text falls
  * back to a system face mid-word and the display type looks broken.
  *
- * Zilla Slab reads as stamped/carved lettering rather than editorial-blog
- * serif — closer to a trail sign or a survey report than a magazine, which is
- * the point of the rozcestník concept this site is built around.
+ * Fraunces gives the site a distinctive, slightly organic voice without
+ * turning the cottage into a rustic theme park. DM Sans keeps the practical
+ * information quiet and easy to scan.
  */
-const zillaSlab = Zilla_Slab({
+const fraunces = Fraunces({
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-zilla-slab",
+  variable: "--font-fraunces",
   display: "swap",
 });
 
-const familjen = Familjen_Grotesk({
+const dmSans = DM_Sans({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-familjen",
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
@@ -94,7 +94,7 @@ export default function RootLayout({
   return (
     <html
       lang="cs"
-      className={`${zillaSlab.variable} ${familjen.variable} ${plexMono.variable}`}
+      className={`${fraunces.variable} ${dmSans.variable} ${plexMono.variable}`}
     >
       <body className="antialiased">
         <script
