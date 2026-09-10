@@ -23,7 +23,9 @@ export default function Domu() {
 
       <section className={`${obal} py-24 sm:py-36 lg:py-44`}>
         <div className="grid items-center lg:grid-cols-[1.35fr_.8fr]">
-          <FotkaSlot fotka={interier} pomer="4/3" sizes="(min-width: 1024px) 64vw, 92vw" className="min-h-[28rem]" />
+          <div className="relative aspect-[4/5] min-w-0 overflow-hidden sm:aspect-[4/3]">
+            <FotkaSlot fotka={interier} vyplnit sizes="(min-width: 1024px) 64vw, 92vw" />
+          </div>
           <div className="relative z-10 -mt-12 bg-papir px-6 py-9 sm:mx-10 sm:px-10 lg:-ml-20 lg:mr-0 lg:mt-0 lg:px-12 lg:py-14">
             <h2 className="text-[clamp(2.8rem,5.5vw,5.8rem)] font-normal leading-[0.92] tracking-[-0.04em]">{texty.uvod.nadpis}</h2>
             <div className="mt-8 space-y-5 text-[1.02rem] leading-[1.75] text-kura-svetly">

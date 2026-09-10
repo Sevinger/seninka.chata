@@ -51,7 +51,7 @@ export function FormularPoptavky() {
   const chyby = stav.chybyPoli ?? {};
 
   return (
-    <form action={akce} noValidate className="border border-kura/15 bg-papir p-6 sm:p-10">
+    <form action={akce} noValidate className="-mx-5 border-y border-kura/15 bg-papir px-5 py-7 sm:mx-0 sm:border sm:p-10">
       {stav.stav === "chyba" && stav.zprava ? (
         <p
           role="alert"

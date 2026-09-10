@@ -12,10 +12,10 @@ export function HlavickaStranky({
   udaje?: readonly { hodnota: string; popis: string }[];
 }) {
   return (
-    <section className="mx-auto max-w-[92rem] px-5 pb-20 pt-36 sm:px-8 sm:pb-28 sm:pt-44 lg:px-12">
+    <section className="mx-auto max-w-[92rem] px-5 pb-16 pt-28 sm:px-8 sm:pb-28 sm:pt-44 lg:px-12">
       <span className="sr-only">{stitek}</span>
       <div className="grid gap-10 lg:grid-cols-[1.3fr_.7fr] lg:items-end lg:gap-20">
-        <h1 className="max-w-[13ch] text-[clamp(3.4rem,7.2vw,7.8rem)] font-normal leading-[0.88] tracking-[-0.045em]">
+        <h1 className="max-w-[13ch] text-[clamp(3rem,13vw,7.8rem)] font-normal leading-[0.88] tracking-[-0.045em]">
           {nadpis}
         </h1>
         <div>
@@ -29,7 +29,7 @@ export function HlavickaStranky({
           ) : null}
         </div>
       </div>
-      <div aria-hidden className="mt-14 h-px bg-kura/18" />
+      <div aria-hidden className="mt-10 h-px bg-kura/18 sm:mt-14" />
     </section>
   );
 }

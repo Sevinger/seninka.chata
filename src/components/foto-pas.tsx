@@ -44,7 +44,7 @@ export function FotoPas({ fotky }: { fotky: readonly Fotka[] }) {
           <FotkaSlot fotka={fotka} pomer="3/2" sizes="(min-width: 1024px) 54vw, 82vw" className="transition-transform duration-700 ease-out group-hover:scale-[1.018]" />
           <span className="absolute bottom-4 right-4 bg-smrk/75 p-2.5 text-papir"><span className="sr-only">Zvětšit — {fotka.alt}</span><Maximize2 size={17} aria-hidden /></span>
         </button>
-        <figcaption className="mt-3 flex gap-4 text-sm leading-snug text-kura-svetly"><span className="tabular-nums text-kura/45">{String(index + 1).padStart(2, "0")}</span><span>{fotka.alt}</span></figcaption>
+        <figcaption className="mt-3 text-sm leading-snug text-kura-svetly">{fotka.alt}</figcaption>
       </figure>)}
       <div aria-hidden className="w-px shrink-0" />
     </div>

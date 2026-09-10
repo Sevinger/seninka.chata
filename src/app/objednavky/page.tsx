@@ -4,7 +4,6 @@ import { ExternalLink, Mail, Phone } from "lucide-react";
 import { Doplnit } from "@/components/doplnit";
 import { FormularPoptavky } from "@/components/formular-poptavky";
 import { HlavickaStranky } from "@/components/hlavicka-stranky";
-import { Reveal } from "@/components/reveal";
 import { bookingUrl, cena, cenaText, kontakt, texty } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -48,12 +47,12 @@ export default function Objednavky() {
 
       <section className="mx-auto max-w-[86rem] px-5 pb-24 sm:px-8 sm:pb-32 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
-          <Reveal>
+          <div className="min-w-0">
             <FormularPoptavky />
-          </Reveal>
+          </div>
 
-          <Reveal delay={0.1}>
-            <aside className="space-y-10">
+          <div>
+            <aside className="space-y-10 border-t border-kura/15 pt-10 lg:border-0 lg:pt-0">
               {/* price reminder */}
               <div className="border-t-2 border-smrk pt-6">
                 <p className="eyebrow">Cena</p>
@@ -151,7 +150,7 @@ export default function Objednavky() {
                 </ul>
               </div>
             </aside>
-          </Reveal>
+          </div>
         </div>
       </section>
     </>
