@@ -1,123 +1,76 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-import { Galerie } from "@/components/galerie";
+import { FotoPas } from "@/components/foto-pas";
+import { FotoPribeh } from "@/components/foto-pribeh";
 import { Fotka as FotkaSlot } from "@/components/fotka";
 import { Hero } from "@/components/hero";
-import { NadpisSekce } from "@/components/nadpis-sekce";
 import { PruhPoptavka } from "@/components/pruh-poptavka";
-import { Reveal } from "@/components/reveal";
 import { Rozcestnik } from "@/components/rozcestnik";
 import { VybaveniSeznam } from "@/components/vybaveni-seznam";
-import { POCET_NA_HOME, galerie, rozcestnik, texty, vybaveni } from "@/lib/content";
+import { galerie, rozcestnik, texty, vybaveni } from "@/lib/content";
 
-const obal = "mx-auto max-w-[86rem] px-5 sm:px-8 lg:px-12";
+const obal = "mx-auto max-w-[92rem] px-5 sm:px-8 lg:px-12";
 
 export default function Domu() {
-  const ukazka = galerie.slice(0, POCET_NA_HOME);
+  const interier = galerie.find((fotka) => fotka.id === "obyvak-1") ?? galerie[0];
+  const krajina = galerie.find((fotka) => fotka.id === "okoli") ?? galerie[0];
+  const ukazka = galerie.filter((fotka) => fotka.src).slice(0, 9);
 
   return (
     <>
       <Hero />
 
-      {/* ── Úvod ─────────────────────────────────────────────────────────── */}
-      <section className={`${obal} py-24 sm:py-32`}>
-        <Reveal>
-          <NadpisSekce stitek={texty.uvod.stitek} nadpis={texty.uvod.nadpis} />
-        </Reveal>
-
-        <div className="mt-14 grid gap-14 lg:grid-cols-[1.15fr_1fr] lg:gap-24">
-          <Reveal delay={0.08}>
-            <div className="space-y-6">
-              {texty.uvod.text.map((odstavec) => (
-                <p
-                  key={odstavec.slice(0, 24)}
-                  className="font-display text-[1.3rem] leading-[1.65] text-kura sm:text-[1.4rem]"
-                >
-                  {odstavec}
-                </p>
-              ))}
+      <section className={`${obal} py-24 sm:py-36 lg:py-44`}>
+        <div className="grid items-center lg:grid-cols-[1.35fr_.8fr]">
+          <FotkaSlot fotka={interier} pomer="4/3" sizes="(min-width: 1024px) 64vw, 92vw" className="min-h-[28rem]" />
+          <div className="relative z-10 -mt-12 bg-papir px-6 py-9 sm:mx-10 sm:px-10 lg:-ml-20 lg:mr-0 lg:mt-0 lg:px-12 lg:py-14">
+            <h2 className="text-[clamp(2.8rem,5.5vw,5.8rem)] font-normal leading-[0.92] tracking-[-0.04em]">{texty.uvod.nadpis}</h2>
+            <div className="mt-8 space-y-5 text-[1.02rem] leading-[1.75] text-kura-svetly">
+              {texty.uvod.text.map((odstavec) => <p key={odstavec.slice(0, 28)}>{odstavec}</p>)}
             </div>
-          </Reveal>
-
-          <Reveal delay={0.16}>
-            <ul>
-              {texty.uvod.proKoho.map((polozka) => (
-                <li key={polozka.nazev} className="border-t border-kura/12 py-5">
-                  <h3 className="font-body text-[0.9375rem] font-medium tracking-normal text-smrk">
-                    {polozka.nazev}
-                  </h3>
-                  <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-kura-svetly">
-                    {polozka.text}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── Vybavení ─────────────────────────────────────────────────────── */}
-      <section className={`${obal} pb-24 sm:pb-32`}>
-        <Reveal>
-          <NadpisSekce
-            stitek={texty.vybaveni.stitek}
-            nadpis={texty.vybaveni.nadpis}
-          />
-        </Reveal>
-        <VybaveniSeznam polozky={vybaveni} className="mt-12" />
-      </section>
-
-      {/* ── Fotky — proklikávací ukázka, plná galerie je na /ubytovani ────── */}
-      <section className="border-y border-kura/12 bg-papir py-24 sm:py-32">
-        <div className={obal}>
-          <Reveal>
-            <div className="flex flex-wrap items-end justify-between gap-6">
-              <NadpisSekce
-                stitek={texty.galerie.stitek}
-                nadpis={texty.galerie.nadpis}
-              >
-                <p>Kliknutím na fotku se otevře ve větším náhledu.</p>
-              </NadpisSekce>
-              <Link
-                href="/ubytovani"
-                className="group inline-flex items-center gap-2 pb-2 text-[0.9375rem] text-znacka transition-colors hover:text-smrk"
-              >
-                Celá galerie a dispozice
-                <ArrowRight
-                  size={16}
-                  aria-hidden
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </Link>
-            </div>
-          </Reveal>
-
-          <Galerie fotky={ukazka} className="mt-14" />
-        </div>
-      </section>
-
-      {/* ── Okolí — the signpost ─────────────────────────────────────────── */}
-      <section className="border-t border-kura/12 bg-kamen-tmavy/35 py-24 sm:py-32">
-        <div className={`relative ${obal}`}>
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-            <Reveal>
-              <NadpisSekce
-                stitek={texty.okoli.stitek}
-                nadpis={texty.okoli.nadpis}
-              >
-                <p>{texty.okoli.text}</p>
-              </NadpisSekce>
-              <div className="mt-9 overflow-hidden">
-                <FotkaSlot
-                  fotka={galerie.find((fotka) => fotka.id === "okoli") ?? galerie[0]}
-                  sizes="(min-width: 1024px) 36vw, 92vw"
-                />
-              </div>
-            </Reveal>
-
-            <Rozcestnik cile={rozcestnik} className="lg:pt-3" />
           </div>
+        </div>
+
+        <ul className="ml-auto mt-14 grid max-w-5xl border-b border-kura/15 md:grid-cols-3">
+          {texty.uvod.proKoho.map((polozka) => (
+            <li key={polozka.nazev} className="border-t border-kura/15 py-6 md:px-6 md:first:pl-0">
+              <h3 className="font-body text-base font-medium tracking-normal">{polozka.nazev}</h3>
+              <p className="mt-2 max-w-[34ch] text-sm leading-relaxed text-kura-svetly">{polozka.text}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="na-tmavem bg-smrk py-24 text-papir sm:py-32">
+        <div className={obal}>
+          <div className="grid gap-12 lg:grid-cols-[.7fr_1.3fr] lg:gap-20">
+            <h2 className="max-w-[8ch] text-[clamp(3.2rem,6vw,6.7rem)] font-normal leading-[0.88] tracking-[-0.04em] text-papir">Všechno pod jednou střechou.</h2>
+            <VybaveniSeznam polozky={vybaveni} tmave />
+          </div>
+        </div>
+      </section>
+
+      <section className="overflow-hidden bg-papir py-24 sm:py-32">
+        <div className={`${obal} flex flex-wrap items-end justify-between gap-8`}>
+          <h2 className="max-w-[12ch] text-[clamp(3.2rem,6.6vw,7rem)] font-normal leading-[0.9] tracking-[-0.04em]">{texty.galerie.nadpis}</h2>
+          <Link href="/ubytovani" className="group inline-flex items-center gap-2 pb-2 text-sm text-kura-svetly hover:text-smrk">
+            Celá galerie a dispozice
+            <ArrowRight size={17} aria-hidden className="transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
+        <FotoPas fotky={ukazka} />
+      </section>
+
+      <FotoPribeh fotka={krajina} nadpis="Ráno rovnou do hor." text="Nová Seninka leží na konci údolí pod Kralickým Sněžníkem. Od chaty se dá vyrazit pěšky do lesa, na horské trasy i jen na krátkou procházku mezi loukami." />
+
+      <section className={`${obal} py-24 sm:py-36`}>
+        <div className="grid gap-12 lg:grid-cols-[.72fr_1.28fr] lg:gap-24">
+          <div>
+            <h2 className="max-w-[9ch] text-[clamp(3rem,5.4vw,5.8rem)] font-normal leading-[0.92] tracking-[-0.04em]">{texty.okoli.nadpis}</h2>
+            <p className="mt-7 max-w-[40ch] text-base leading-relaxed text-kura-svetly">{texty.okoli.text}</p>
+          </div>
+          <Rozcestnik cile={rozcestnik} />
         </div>
       </section>
 

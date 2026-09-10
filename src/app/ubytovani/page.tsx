@@ -1,143 +1,75 @@
 import type { Metadata } from "next";
 
+import { Fotka } from "@/components/fotka";
 import { Galerie } from "@/components/galerie";
 import { HlavickaStranky } from "@/components/hlavicka-stranky";
-import { NadpisSekce } from "@/components/nadpis-sekce";
 import { PruhPoptavka } from "@/components/pruh-poptavka";
-import { Reveal } from "@/components/reveal";
 import { Rozcestnik } from "@/components/rozcestnik";
 import { VybaveniSeznam } from "@/components/vybaveni-seznam";
-import {
-  dispozice,
-  galerie,
-  okoli,
-  parametry,
-  rozcestnik,
-  texty,
-  vybaveni,
-} from "@/lib/content";
+import { dispozice, galerie, okoli, parametry, rozcestnik, vybaveni } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "O ubytování",
-  description:
-    "Dispozice chaty: přízemí s obývacím pokojem, kuchyní a krbem, v podkroví dvě ložnice s pěti lůžky. Vybavení, fotogalerie a okolí v Jeseníkách.",
+  description: "Dispozice chaty, dvě ložnice s pěti lůžky, vybavení, fotogalerie a okolí v Jeseníkách.",
 };
 
-const obal = "mx-auto max-w-[86rem] px-5 sm:px-8 lg:px-12";
+const obal = "mx-auto max-w-[92rem] px-5 sm:px-8 lg:px-12";
 
 export default function Ubytovani() {
+  const fotografie = [
+    galerie.find((fotka) => fotka.id === "obyvak-1") ?? galerie[0],
+    galerie.find((fotka) => fotka.id === "loznice-1") ?? galerie[0],
+  ];
+
   return (
     <>
-      <HlavickaStranky
-        stitek="O ubytování"
-        nadpis="Dřevěná chata na dvou podlažích, celá vaše"
-        udaje={parametry}
-      >
-        <p>
-          Přízemí je společné — vaří se tam, jí a sedí u krbu. Nahoře se spí.
-          Nic se s nikým nesdílí, protože tu nikdo jiný není.
-        </p>
+      <HlavickaStranky stitek="O ubytování" nadpis="Dřevěná chata na dvou podlažích, celá vaše" udaje={parametry}>
+        <p>Přízemí je společné — vaří se tam, jí a sedí u krbu. Nahoře se spí. Nic se s nikým nesdílí, protože chata patří po dobu pobytu jen vám.</p>
       </HlavickaStranky>
 
-      {/* ── Dispozice ────────────────────────────────────────────────────── */}
-      <section className={`${obal} pb-24 sm:pb-32`}>
-        <div className="grid gap-14 md:grid-cols-2 md:gap-16">
-          {dispozice.map((podlazi, i) => (
-            <Reveal key={podlazi.stitek} delay={i * 0.1}>
-              <article className="h-full border-t-2 border-smrk pt-7">
-                <div className="udaj text-[0.6875rem] uppercase tracking-[0.18em] text-znacka">
-                  {podlazi.stitek}
-                </div>
-                <h2 className="mt-3 text-[clamp(1.5rem,3vw,2.05rem)] font-normal">
-                  {podlazi.nazev}
-                </h2>
-                <p className="mt-4 text-[1.0625rem] leading-relaxed text-kura-svetly">
-                  {podlazi.popis}
-                </p>
-                <ul className="mt-7 space-y-0">
-                  {podlazi.body.map((bod) => (
-                    <li
-                      key={bod}
-                      className="flex items-baseline gap-3 border-t border-kura/12 py-3 text-[0.9375rem] text-kura"
-                    >
-                      {/* a tick, not a bullet dot — matches the doplnit badge */}
-                      <span
-                        aria-hidden
-                        className="h-3 w-[3px] shrink-0 translate-y-0.5 bg-mech"
-                      />
-                      {bod}
-                    </li>
-                  ))}
+      <section className={`${obal} pb-28 sm:pb-36`}>
+        <div className="space-y-24 sm:space-y-32">
+          {dispozice.map((podlazi, index) => (
+            <article key={podlazi.stitek} className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
+              <Fotka fotka={fotografie[index]} pomer="4/3" sizes="(min-width: 1024px) 48vw, 92vw" className={index % 2 ? "lg:order-2" : ""} />
+              <div>
+                <p className="text-sm text-kura/45">{podlazi.stitek}</p>
+                <h2 className="mt-4 text-[clamp(2.4rem,4.5vw,4.8rem)] font-normal leading-[0.94] tracking-[-0.035em]">{podlazi.nazev}</h2>
+                <p className="mt-6 max-w-[48ch] text-base leading-[1.75] text-kura-svetly">{podlazi.popis}</p>
+                <ul className="mt-8 border-b border-kura/15">
+                  {podlazi.body.map((bod) => <li key={bod} className="border-t border-kura/15 py-3.5 text-sm">{bod}</li>)}
                 </ul>
-              </article>
-            </Reveal>
+              </div>
+            </article>
           ))}
         </div>
       </section>
 
-      {/* ── Vybavení ─────────────────────────────────────────────────────── */}
       <section className="na-tmavem bg-smrk py-24 sm:py-32">
         <div className={obal}>
-          <Reveal>
-            <NadpisSekce
-              stitek={texty.vybaveni.stitek}
-              nadpis={texty.vybaveni.nadpis}
-              tmave
-            />
-          </Reveal>
-          <VybaveniSeznam polozky={vybaveni} tmave className="mt-12" />
+          <h2 className="max-w-[10ch] text-[clamp(3rem,5.6vw,6rem)] font-normal leading-[0.9] tracking-[-0.04em] text-papir">Co na chatě najdete</h2>
+          <VybaveniSeznam polozky={vybaveni} tmave className="mt-14" />
         </div>
       </section>
 
-      {/* ── Galerie ──────────────────────────────────────────────────────── */}
-      <section className={`${obal} py-24 sm:py-32`}>
-        <Reveal>
-          <NadpisSekce stitek={texty.galerie.stitek} nadpis="Fotogalerie">
-            <p>
-              Kliknutím se fotka zvětší. Šipkami se prochází celá galerie.
-            </p>
-          </NadpisSekce>
-        </Reveal>
+      <section className={`${obal} py-24 sm:py-36`}>
+        <h2 className="text-[clamp(3rem,6vw,6.4rem)] font-normal leading-[0.9] tracking-[-0.04em]">Fotogalerie</h2>
+        <p className="mt-5 text-base text-kura-svetly">Kliknutím fotku zvětšíte. Mezi snímky se dá přecházet šipkami.</p>
         <Galerie fotky={galerie} className="mt-14" />
       </section>
 
-      {/* ── Okolí ────────────────────────────────────────────────────────── */}
-      <section className="na-tmavem relative overflow-hidden border-t border-kamen/10 bg-smrk py-24 sm:py-32">
-        <div aria-hidden className="vrstevnice absolute inset-0 opacity-[0.28]" />
-        <div className={`relative ${obal}`}>
-          <Reveal>
-            <NadpisSekce stitek={texty.okoli.stitek} nadpis="Co je kolem" tmave>
-              <p>{texty.okoli.text}</p>
-            </NadpisSekce>
-          </Reveal>
-
-          <div className="mt-14 grid gap-14 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
-            <div>
-              {[okoli.leto, okoli.zima, okoli.dojezd].map((blok, i) => (
-                <Reveal key={blok.stitek} delay={i * 0.08}>
-                  <article className="border-t border-kamen/15 py-7">
-                    <div className="udaj text-[0.6875rem] uppercase tracking-[0.18em] text-mech-svetly">
-                      {blok.stitek}
-                    </div>
-                    <h3 className="mt-2.5 text-[1.35rem] font-normal text-papir">
-                      {blok.nadpis}
-                    </h3>
-                    <p className="mt-3 text-[0.9375rem] leading-relaxed text-kamen/70">
-                      {blok.text}
-                    </p>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
-
-            <div>
-              <p className="eyebrow mb-5 text-mech-svetly">Rozcestník</p>
-              <Rozcestnik cile={rozcestnik} />
-              <p className="mt-6 pl-4 text-[0.8125rem] text-kamen/45 sm:pl-6">
-                Vzdálenosti jsou přibližné.
-              </p>
-            </div>
+      <section className="bg-papir py-24 sm:py-32">
+        <div className={`${obal} grid gap-14 lg:grid-cols-[.75fr_1.25fr] lg:gap-24`}>
+          <div>
+            <h2 className="text-[clamp(3rem,5.5vw,5.8rem)] font-normal leading-[0.92] tracking-[-0.04em]">Co je kolem</h2>
+            {[okoli.leto, okoli.zima, okoli.dojezd].map((blok) => (
+              <div key={blok.stitek} className="mt-7 border-t border-kura/15 pt-5">
+                <h3 className="font-body text-base font-medium tracking-normal">{blok.nadpis}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-kura-svetly">{blok.text}</p>
+              </div>
+            ))}
           </div>
+          <Rozcestnik cile={rozcestnik} />
         </div>
       </section>
 

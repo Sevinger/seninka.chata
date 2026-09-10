@@ -2,10 +2,12 @@
   "name": "chata-seninka",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test": "node --test --experimental-strip-types src/lib/*.test.ts",
     "lint": "eslint",
     "check-obsah": "node tools/check-obsah.mjs"
   },

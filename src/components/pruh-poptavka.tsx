@@ -1,6 +1,5 @@
 import { ArrowRight, ExternalLink } from "lucide-react";
 
-import { Reveal } from "@/components/reveal";
 import { Tlacitko } from "@/components/tlacitko";
 import { bookingUrl, cenaText, cena } from "@/lib/content";
 
@@ -17,23 +16,21 @@ export function PruhPoptavka({
   text?: string;
 }) {
   return (
-    <section className="border-t border-kura/12 bg-papir">
-      <div className="mx-auto max-w-[86rem] px-5 py-20 sm:px-8 sm:py-24 lg:px-12">
-        <Reveal>
-          <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+    <section className="na-tmavem bg-smrk">
+      <div className="mx-auto max-w-[92rem] px-5 py-24 sm:px-8 sm:py-32 lg:px-12">
+          <div className="flex flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-xl">
-              <span className="eyebrow">Rezervace</span>
-              <h2 className="mt-5 text-[clamp(1.85rem,4vw,2.75rem)] font-normal">
+              <h2 className="max-w-[11ch] text-[clamp(3rem,6.4vw,6.8rem)] font-normal leading-[0.9] tracking-[-0.04em] text-papir">
                 {nadpis}
               </h2>
-              <p className="mt-4 text-[1.0625rem] leading-relaxed text-kura-svetly">
+              <p className="mt-6 max-w-[44ch] text-base leading-relaxed text-kamen/65">
                 {text}
               </p>
             </div>
 
             <div className="shrink-0">
-              <p className="udaj text-sm text-kura-svetly">
-                <span className="text-2xl text-smrk">{cenaText}</span> {cena.jednotka}
+              <p className="text-sm text-kamen/60">
+                <span className="mr-2 font-display text-3xl text-papir">{cenaText}</span> {cena.jednotka}
               </p>
               <div className="mt-5 flex flex-wrap gap-3">
                 <Tlacitko href="/objednavky">
@@ -41,7 +38,7 @@ export function PruhPoptavka({
                   <ArrowRight size={17} aria-hidden />
                 </Tlacitko>
                 {bookingUrl ? (
-                  <Tlacitko href={bookingUrl} varianta="vedlejsi" externi>
+                  <Tlacitko href={bookingUrl} varianta="vedlejsi-tmave" externi>
                     Booking.com
                     <ExternalLink size={16} aria-hidden />
                   </Tlacitko>
@@ -49,7 +46,6 @@ export function PruhPoptavka({
               </div>
             </div>
           </div>
-        </Reveal>
       </div>
     </section>
   );

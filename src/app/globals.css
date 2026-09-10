@@ -144,7 +144,19 @@
   );
 }
 
+.foto-pas {
+  scrollbar-width: none;
+}
+
+.foto-pas::-webkit-scrollbar {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .hero-video {
+    display: none;
+  }
+
   html {
     scroll-behavior: auto;
   }

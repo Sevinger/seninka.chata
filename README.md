@@ -106,6 +106,7 @@ npm install
 npm run dev          # http://localhost:3000
 npm run build        # produkční build
 npm run check-obsah  # co ještě chybí doplnit
+npm test             # pohyb a fotografický pás
 npm run lint
 ```
 
@@ -125,7 +126,7 @@ Node 20+.
 - **Next.js 16** (App Router) + **React 19**, TypeScript
 - **Tailwind CSS v4** — barvy a fonty jsou v `src/app/globals.css` v bloku `@theme`
 - **Resend** pro odeslání poptávky
-- **framer-motion** — jen jemné prolínačky při scrollu a lehká parallax v hlavičce
+- **framer-motion** — pohyb hero média a jedné krajinné scény při scrollu
 - Bez databáze, bez administrace, bez přihlašování
 
 ```
@@ -145,23 +146,33 @@ tools/
 
 ### Vizuální styl
 
-Web čte jako **turistická mapa a rozcestník**: tlumený papírově kamenný podklad,
-smrkově zelená struktura a jedna jediná sytá barva — **červená turistická
-značka** —, která se používá výhradně tam, kam má návštěvník jít dál. Na nic
-jiného se nepoužívá.
+Web je postavený jako fotografický příběh konkrétního místa. Úvod tvoří
+letecká videosmyčka, velká editoriální typografie a jediná hlavní akce.
+Další fotografie se střídají v asymetrických kompozicích, horizontálním pásu
+a jedné široké krajinné scéně. Praktické informace nejsou schované v
+dekorativních kartách ani bublinách.
 
-Podpisový prvek je **rozcestník** v sekci okolí: směrovky ve tvaru šipek
-s cílem, vzdáleností a způsobem dopravy. Není to ozdoba — je to přesně ten
-údaj, který host před rezervací hledá.
+Písma: **Fraunces** pro výrazné nadpisy, **DM Sans** pro běžný text a
+**IBM Plex Mono** pouze tam, kde pomáhá čitelnosti údajů. Všechna mají
+latin-ext, takže česká diakritika sedí.
 
-Značka (tři pruhy: světlý / červený / světlý) se opakuje před nadpisy sekcí
-a je i jako ikona webu.
+Animace respektují systémové nastavení „omezit pohyb“. V takovém případě se
+hero video skryje a zůstane fotografie, scrollové transformace se zastaví.
 
-Písma: **Zilla Slab** (nadpisy — stamped, ne editorial), **Familjen Grotesk**
-(text), **IBM Plex Mono** (čísla, vzdálenosti, ceny). Všechna mají latin-ext,
-takže česká diakritika sedí.
+### Hero video
 
-Tečky se na webu nepoužívají — všechny odrážky, značky u chybějících údajů
-i oddělovače v textu jsou hranaté (drobný svislý „tick“), ne kulaté.
+Homepage používá dvě krátké H.264 smyčky v `public/video/`:
 
-Animace jsou schválně malé a respektují systémové nastavení „omezit pohyb“.
+- `seninka-hero-desktop.mp4` — 1600 × 900 px, přibližně 3,3 MB,
+- `seninka-hero-mobile.mp4` — 720 × 960 px, přibližně 1,6 MB.
+
+Zdrojové video zůstává mimo Git. Nové varianty se vytvoří příkazem:
+
+```bash
+tools/render-hero-video.sh "/cesta/k/Nová Seninka - chata v1.0. bez hudby.mp4"
+```
+
+Skript vybere úvodní letecký záběr, vytvoří vratnou smyčku a exportuje MP4
+s rychlým startem pro web. `public/fotky/hero.webp` slouží jako poster a jako
+náhrada při vypnutých animacích nebo zablokovaném autoplay. Původní velké
+video se do repozitáře nikdy nepřidává.
