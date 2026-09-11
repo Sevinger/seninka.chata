@@ -153,6 +153,14 @@
   display: none;
 }
 
+/* Keep the complete mobile hero action visible on short phone screens. */
+@media (max-width: 39.99rem) and (max-height: 43.75rem) {
+  .hero-media-panel {
+    height: 36svh;
+    min-height: 14rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-video {
     display: none;
